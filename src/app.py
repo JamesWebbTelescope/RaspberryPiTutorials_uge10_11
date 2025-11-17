@@ -1,7 +1,7 @@
 from flask import Flask, send_from_directory
 from werkzeug.middleware.proxy_fix import ProxyFix
 from apis import create_api, jwt
-#from database_commands.database_manager import DatabaseManager
+from database_commands.database_manager import DatabaseManager
 #from database_commands.product import ProductModel
 from core.config import Config, ReadConfigFile
 from core.utils import create_admin_user
@@ -37,7 +37,7 @@ def create_app():
     app.wsgi_app = ProxyFix(app.wsgi_app)
     CORS(app, origins=["http://localhost:5173"], supports_credentials=True) 
 
-    app.config["JWT_SECRET_KEY"] = config.jwt_token
+    #app.config["JWT_SECRET_KEY"] = config.jwt_token
     app.config["DEBUG"] = config.debug
     app.config["SWAGGER_UI"] = config.swagger_ui
     app.config["API_HOST"] = config.api_host
@@ -56,9 +56,9 @@ def create_app():
 
     # create the api
     api = create_api(
-        title="Lagersystem API",
+        title="Raspberry Pi Tutorials API",
         version="1.0",
-        description="Largersystem API",
+        description="Raspberry Pi Tutorials API",
         swagger_ui=config.swagger_ui,
         db_manager=dbManger
     )
