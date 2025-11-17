@@ -1,6 +1,6 @@
 from flask import Flask, send_from_directory
 from werkzeug.middleware.proxy_fix import ProxyFix
-from apis import create_api, jwt
+from apis import create_api#, jwt
 from database_commands.database_manager import DatabaseManager
 #from database_commands.product import ProductModel
 from core.config import Config, ReadConfigFile
@@ -66,7 +66,7 @@ def create_app():
     api.init_app(app,docs=config.swagger_ui)
 
     # json webtoken manager
-    jwt.init_app(app)
+    #jwt.init_app(app)
     
     #setup admin user
     create_admin_user(dbManger)
