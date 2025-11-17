@@ -50,14 +50,14 @@ def create_admin_user(
     # Do not create admin:
     # If any users is on db 
     user_list = db_manager.admin.GetAll()    
-    if len(user_list) > 0:
-        return False
+    #if len(user_list) > 0:
+        #return False
 
     # Create new user 
     db_manager.admin.Insert(
         name=name,
         password_hash=generate_password_hash(password)
-    )    
+    )   
 
     return True
 

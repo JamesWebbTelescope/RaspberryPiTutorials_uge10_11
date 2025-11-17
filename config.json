@@ -1,8 +1,8 @@
 {
-    "db_name": "lagersystem",
+    "db_name": "tutorials",
     "db_host": "localhost",
     "db_user": "root",
-    "db_password": "Km7NmkR7Vkastt",
+    "db_password": "MYSQL1234.com",
     "debug": true,
     "swagger_ui": true,
     "api_host": "localhost",
