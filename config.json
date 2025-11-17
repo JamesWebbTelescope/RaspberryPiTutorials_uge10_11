@@ -1,0 +1,10 @@
+{
+    "db_name": "lagersystem",
+    "db_host": "localhost",
+    "db_user": "root",
+    "db_password": "Km7NmkR7Vkastt",
+    "debug": true,
+    "swagger_ui": true,
+    "api_host": "localhost",
+    "api_port": 5000
+}
