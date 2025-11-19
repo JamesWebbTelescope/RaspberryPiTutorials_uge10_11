@@ -12,8 +12,7 @@ export default function Home() {
           Raspberry Pi Tutorials
         </h2>
         <p className="text-green-400 max-w-xl mb-8">
-          Manage your inventory effortlessly with a modern, sleek interface. 
-          Track, update, and visualize your stock in real-time.
+          Every type of tutorial imaginable for the Raspberry Pi!
         </p>
  
       </section>
