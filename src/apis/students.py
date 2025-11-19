@@ -10,8 +10,22 @@ def create_api_students(db_manager):
         'lastname': fields.String(required=True, description='Student last name'),
         'status': fields.String(required=True, description='Student status')})
     
+
+    @api.route("/")
     class Student(Resource):
 
+        @api.doc('Get all students')
         def get(self):
-            students = self.db.students.GetAll()
+            students = db_manager.students.GetAll()
             return students
+        
+        @api.expect(student_model)
+        def post(self):
+            firstname = api.payload['firstname']
+            lastname = api.payload['lastname']
+            status = api.payload['status']
+            result = db_manager.students.Create(firstname, lastname, status)
+            return result
+
+    
+    return api

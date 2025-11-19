@@ -24,7 +24,7 @@ def create_api(
     )
 
     api.add_namespace(create_api_auth(db_manager), path="/api/auth")
-    api.add_namespace(create_api_students(db_manager), path="/api/students")
+    api.add_namespace(create_api_students(db_manager), path="/api/student")
     #api.add_namespace(create_api_product(db_manager), path="/api/product")
     #api.add_namespace(create_api_warehouse(db_manager), path="/api/warehouse")
     #api.add_namespace(create_api_customer(db_manager), path="/api/customer")

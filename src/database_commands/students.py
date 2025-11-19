@@ -16,12 +16,24 @@ class StudentModel:
                     results.append(StudentModel._TupleToDict(u))
                 return results
         except Exception as e:
-            print("Error getting all admins", e)
+            print("Error getting all students", e)
+            return False
+        
+    def Create(self, firstname, lastname, status):
+        try:
+            conn = self.db.get_connection()
+            with conn.cursor() as cursor:
+                cursor.execute(f"INSERT INTO tutorials.students (firstname, lastname, status) VALUES('{firstname}', '{lastname}', '{status}')")
+                myresult = cursor.fetchall()
+            conn.commit()
+            return True
+        except Exception as e:
+            print("Error creating new student", e)
             return False
         
     def _TupleToDict(tuple):
         return {
-                "firstname": tuple[0],
-                "lastname": tuple[1],
+                "firstname": tuple[1],
+                "lastname": tuple[2],
                 "status": tuple[3]
             }
