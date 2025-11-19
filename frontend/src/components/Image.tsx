@@ -1,4 +1,3 @@
-import React from 'react';
 import car from '../assets/raspberry-pi-5.png'; // Import the image
 
 function RaspberryPiImage() {
