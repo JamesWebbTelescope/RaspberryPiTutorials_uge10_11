@@ -16,7 +16,7 @@ export default function Layout({ children }: LayoutProps) {
 
 
       <footer className="bg-gray-900 text-center py-4 text-gray-400">
-        © 2025 Lagersystem. All rights reserved.
+        © 2025 Raspberry Pi Tutorials. All rights reserved.
       </footer>
 
     </div>
