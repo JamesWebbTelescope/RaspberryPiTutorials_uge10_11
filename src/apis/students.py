@@ -6,6 +6,7 @@ def create_api_students(db_manager):
     api: Namespace = Namespace("students", description="Student namespace", authorizations=authorizations)
 
     student_model: Model = api.model('StudentModel', {
+        'ID': fields.Integer(required=True, description= 'Student ID'),
         'firstname': fields.String(required=True, description='Student first name'),
         'lastname': fields.String(required=True, description='Student last name'),
         'status': fields.String(required=True, description='Student status')})
@@ -26,6 +27,20 @@ def create_api_students(db_manager):
             status = api.payload['status']
             result = db_manager.students.Create(firstname, lastname, status)
             return result
-
+        
+        @api.expect(student_model)
+        def put(self):
+            ID = api.payload['ID']
+            firstname = api.payload['firstname']
+            lastname = api.payload['lastname']
+            status = api.payload['status']
+            result = db_manager.students.Update(ID, firstname, lastname, status)
+            return result
+        
+        @api.expect(student_model)
+        def delete(self):
+            ID = api.payload['ID']
+            result = db_manager.students.Delete(ID)
+            return result
     
     return api

@@ -9,7 +9,7 @@ class TutorialModel:
         try:
             conn = self.db.get_connection()
             with conn.cursor() as cursor:
-                cursor.execute("SELECT * FROM tutorials.students")
+                cursor.execute("SELECT * FROM tutorials.tutorials")
                 myresult = cursor.fetchall()
                 results = [] 
                 for u in myresult:
@@ -21,6 +21,7 @@ class TutorialModel:
     
     def _TupleToDict(tuple):
         return {
+                "ID": tuple[0],
                 "name": tuple[1],
                 "link": tuple[2]
             }

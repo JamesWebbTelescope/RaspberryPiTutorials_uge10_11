@@ -30,9 +30,34 @@ class StudentModel:
         except Exception as e:
             print("Error creating new student", e)
             return False
+    
+    def Update(self, ID, firstname, lastname, status):
+        try:
+            conn = self.db.get_connection()
+            with conn.cursor() as cursor:
+                cursor.execute(f"UPDATE students SET firstname = '{firstname}', lastname = '{lastname}', status = '{status}' WHERE studentID = {ID}")
+                myresult = cursor.fetchall()
+            conn.commit()
+            return True
+        except Exception as e:
+            print("Error updating student", e)
+            return False
+        
+    def Delete(self, ID):
+        try:
+            conn = self.db.get_connection()
+            with conn.cursor() as cursor:
+                cursor.execute(f"UPDATE students SET firstname = '', lastname = '', status = 'Inactive' WHERE studentID = {ID}")
+                myresult = cursor.fetchall()
+            conn.commit()
+            return True
+        except Exception as e:
+            print("Error updating student", e)
+            return False
         
     def _TupleToDict(tuple):
         return {
+                "ID": tuple[0],
                 "firstname": tuple[1],
                 "lastname": tuple[2],
                 "status": tuple[3]

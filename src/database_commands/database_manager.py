@@ -1,6 +1,7 @@
 import mysql.connector
 from database_commands.admin import AdminModel
 from database_commands.students import StudentModel
+from database_commands.tutorials import TutorialModel
 
 class DatabaseManager:
     def __init__(self, host, user, password, dbname):
@@ -13,6 +14,7 @@ class DatabaseManager:
 
         self.admin = AdminModel(self)
         self.students = StudentModel(self)
+        self.tutorials = TutorialModel(self)
 
         try:
             self.get_connection()
