@@ -4,3 +4,9 @@ export interface Student{
     lastname: string;
     status: string;
 }
+
+export interface Customer{
+    id: number;
+    name: string;
+    link: string;
+}
