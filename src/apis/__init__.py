@@ -1,5 +1,6 @@
 from flask_restx import Api
 from apis.auth import create_api_auth, jwt
+from apis.students import create_api_students
 #from apis.products import create_api_product
 #from apis.warehouse import create_api_warehouse
 #from apis.customer import create_api_customer
@@ -23,6 +24,7 @@ def create_api(
     )
 
     api.add_namespace(create_api_auth(db_manager), path="/api/auth")
+    api.add_namespace(create_api_students(db_manager), path="/api/students")
     #api.add_namespace(create_api_product(db_manager), path="/api/product")
     #api.add_namespace(create_api_warehouse(db_manager), path="/api/warehouse")
     #api.add_namespace(create_api_customer(db_manager), path="/api/customer")
