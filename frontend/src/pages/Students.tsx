@@ -19,7 +19,7 @@ export default function StudentsPage() {
         const fetchData = async () => {
             const students = await GetStudents(API_URL);
             for(const student of students){
-                console.log(`Getting inventory from: ${wh.name}`)
+                console.log(`Getting all students`)
                 const stud = students.find(item => item.id === student.id);
                 if(stud){
                     results.push({
