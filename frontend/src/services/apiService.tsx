@@ -3,8 +3,8 @@ import type {StudentData, TutorialData} from '../types/Types'
 export const GetTutorials = async (url: string) => {
     try{
         const res = await fetch(`${url}/api/tutorials`)
-        const data = await res.json
-        let tutorials: Array<TutorialData>
+        const data = await res.json()
+        let tutorials: Array<TutorialData> = []
         for(let i = 0; i < data.length; i++)
         {
             const tutorial: TutorialData = {} as TutorialData
@@ -23,9 +23,9 @@ export const GetTutorials = async (url: string) => {
 
 export const GetStudents = async (url: string) => {
     try{
-        const res = await fetch(`${url}/api/students`)
-        const data = await res.json
-        let students: Array<StudentData>
+        const res = await fetch(`${url}/api/student/`)
+        const data = await res.json()
+        let students: Array<StudentData> = []
         for(let i = 0; i < data.length; i++)
         {
             const student: StudentData = {} as StudentData

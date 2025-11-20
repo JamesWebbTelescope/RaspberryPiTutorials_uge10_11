@@ -29,9 +29,12 @@ export default function StudentsPage() {
                                 lastname: stud.lastname,
                                 status: stud.status,
                             });
+                        console.log(stud.id)
+                        console.log(stud.firstname)
+                        console.log(stud.lastname)
+                        console.log(stud.status)
                         }
-                }       
-            console.log(results);    
+                }           
             setStudentData(results);
         };
         fetchData();

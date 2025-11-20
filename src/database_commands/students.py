@@ -9,7 +9,7 @@ class StudentModel:
         try:
             conn = self.db.get_connection()
             with conn.cursor() as cursor:
-                cursor.execute("SELECT * FROM tutorials.students")
+                cursor.execute("SELECT * FROM students")
                 myresult = cursor.fetchall()
                 results = [] 
                 for u in myresult:

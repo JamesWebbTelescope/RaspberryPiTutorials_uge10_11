@@ -21,13 +21,19 @@ class DatabaseManager:
 
         except Exception as e:
             print(f"Could not connect to database: {dbname}")
+            print(f"Error: {e}")
 
     def get_connection(self):
-        if not self.mydb or not self.mydb.is_connected():
-            self.mydb = mysql.connector.connect(
-                host=self.host,
-                user=self.user,
-                password=self.password,
-                database=self.dbname
-            )
-        return self.mydb
+        try:
+            if not self.mydb or not self.mydb.is_connected():
+                self.mydb = mysql.connector.connect(
+                    host=self.host,
+                    user=self.user,
+                    password=self.password,
+                    database=self.dbname,
+                    auth_plugin='mysql_native_password',
+                )
+            return self.mydb
+        except Exception as e:
+            print(f"Could not get sql connection: {e}")
+            return None
