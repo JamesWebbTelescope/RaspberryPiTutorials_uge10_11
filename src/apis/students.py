@@ -1,3 +1,4 @@
+from flask import jsonify
 from flask_restx import Namespace, Resource, fields, Model
 from apis.auth import authorizations
 
@@ -18,7 +19,7 @@ def create_api_students(db_manager):
         @api.doc('Get all students')
         def get(self):
             students = db_manager.students.GetAll()
-            return students
+            return jsonify(students, 200)
         
         @api.expect(student_model)
         def post(self):
