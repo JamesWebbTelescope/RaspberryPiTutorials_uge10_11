@@ -68,6 +68,20 @@ export default function Navbar() {
           {}
         </button>
       }
+      <a href="/tutorials" className={holoLinkClass}>
+        Tutorials
+      </a>
+      {
+        <button
+          onClick={() => {
+            // clearToken();
+            navigate("/tutorials");
+          }}
+          className={holoLinkClass}
+        >
+          {}
+        </button>
+      }
     </nav>
   );
 }

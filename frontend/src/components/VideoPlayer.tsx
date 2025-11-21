@@ -1,13 +1,24 @@
-import YouTube from 'react-youtube';
+import React from "react";
+ import YouTube from "react-youtube";
 
-const VideoPlayer = () => {
-    const videoId = 'https://www.youtube.com/watch?v=VQRD_9ilftw'; // Replace with your YouTube video ID
 
-    return (
-    <div>
-        <YouTube videoId={videoId} />
-    </div>
-    );
-};
+ class MovieClip extends React.Component {
+    render() {
+      const options = {
+        height: '390',
+        width: '640',
+        playerVars: {
+          autoplay: 1,
+          controls: 1,
+        },
+      };
+  
+      return <YouTube videoId="qk_3SwXmpGM" opts={options} onReady={this._onReady} id="video"/>;
+    }
+  
+    _onReady(event: any) {
+      event.target.pauseVideo();
+    }
+  }
 
-export default VideoPlayer;
+  export default MovieClip;
