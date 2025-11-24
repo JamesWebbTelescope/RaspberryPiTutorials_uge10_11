@@ -1,6 +1,7 @@
 import Layout from "../components/Layout";
 import { useState, useEffect, useRef } from "react";
 import VideoPlayer from "../components/VideoPlayer";
+import TextRender from "../components/TextDispayer";
 import { GetTutorials } from "../services/apiService";
 import { Dropdown } from "react-bootstrap";
 
@@ -20,20 +21,21 @@ export default function TutorialsPage() {
 
     const setDisplay = async (url: string) => {
         let result = url.includes("youtube")
-        if(result)
+        console.log(result)
+        if(result == true)
         {
             link.current = url
             console.log(url)
             console.log("This is a youtube link")
             return ([
-                updateDisplay(!display)])
+                updateDisplay(display)])
         }
-        else
+        else if(result == false)
         {
             link.current = url
             console.log(url)
             console.log("Nothing has happened yet")
-            return ([updateDisplay(!display)])
+            return ([updateDisplay(display)])
         }
 
     }
@@ -74,7 +76,7 @@ export default function TutorialsPage() {
                 </Dropdown.Menu>
                 ))}
         <>
-            {display ? <VideoPlayer url={link.current}/>: <>"Nothing" </>}
+            {display ? <VideoPlayer url={link.current}/>: < TextRender url ={link.current} />}
         </>
     </Layout>
 }

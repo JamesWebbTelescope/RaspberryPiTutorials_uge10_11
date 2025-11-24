@@ -7,9 +7,10 @@ interface TextProps {
 class TextRender extends React.Component<TextProps>{
     render(): React.ReactNode {
         let website = fetch(this.props.url)
-        console.log(website)
+        
+        console.log(website.finally.toString)
         return 
     }
 }
 
-export default TextRender
+export default TextRender;
