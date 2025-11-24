@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
  import YouTube from "react-youtube";
+
+const id = useRef("qk_3SwXmpGM")
 
 interface YoutubeProps {
   url: string
@@ -7,10 +9,10 @@ interface YoutubeProps {
 
  class MovieClip extends React.Component<YoutubeProps> {
       findId(url: string){
-        let index_start = url.indexOf("=")
+        let index_start = url.indexOf("=")+1
         let index_end = url.length
-        let id = url.slice(index_start, index_end)
-        console.log(id)
+        id.current = url.slice(index_start, index_end)
+        console.log(id.current)
       }
       render() {
       this.findId(this.props.url)
@@ -23,7 +25,7 @@ interface YoutubeProps {
         },
       };
     
-      return <YouTube videoId="qk_3SwXmpGM" opts={options} onReady={this._onReady} id="video" />;
+      return <YouTube videoId={id.current} opts={options} onReady={this._onReady} id="video" />;
     }
   
     _onReady(event: any) {
