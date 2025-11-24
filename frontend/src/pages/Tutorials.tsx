@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use, useRef } from "react";
 import VideoPlayer from "../components/VideoPlayer";
 import { GetTutorials } from "../services/apiService";
 import { Dropdown } from "react-bootstrap";
@@ -11,6 +11,7 @@ interface DisplayTutorial {
 }
 
 export default function TutorialsPage() {
+    let link = useRef("")
     const [tutorials, setTutorialData] = useState<DisplayTutorial[]>([])
     const [display, updateDisplay] = useState(false)
 
@@ -21,14 +22,15 @@ export default function TutorialsPage() {
         let result = url.includes("youtube")
         if(result)
         {
+            link.current = url
             console.log(url)
             console.log("This is a youtube link")
             return ([
-                <VideoPlayer/>,
                 updateDisplay(!display)])
         }
         else
         {
+            link.current = url
             console.log(url)
             console.log("Nothing has happened yet")
             return ([updateDisplay(!display)])
@@ -71,5 +73,8 @@ export default function TutorialsPage() {
                 </Dropdown.Item>
                 </Dropdown.Menu>
                 ))}
+        <>
+            {display ? <VideoPlayer url={link.current}/>: <>"Nothing" </>}
+        </>
     </Layout>
 }
