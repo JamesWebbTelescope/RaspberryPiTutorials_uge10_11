@@ -1,4 +1,5 @@
 from flask_restx import Namespace, Resource, fields, Model
+from flask import request
 from apis.auth import authorizations
 
 def create_api_tutorials(db_manager):
@@ -11,12 +12,18 @@ def create_api_tutorials(db_manager):
     
     delete_tutorial_model: Model = api.model("Delete tutorial", {'ID': fields.Integer(required=True, description="The course ID")})
     
-    api.route("/<string:url>")
+    @api.route("/external")
     class GetTutorialsExternal(Resource):
 
-        @api.doc("Get tutorials from external website")
-        def get(self, url):
-            response = db_manager.tutorials.GetExternal()
+        @api.doc("Get tutorials from external website", params={"url": "Link to tutorial"})
+        def get(self):
+            url = request.args.get("url", default="World", type=str)
+            print(url)
+            start = url.index("www")
+            end = len(url)
+            link = url[start:end]
+            print(link)
+            response = db_manager.tutorials.GetExternal(link)
             return response, 200
 
     @api.route("/")

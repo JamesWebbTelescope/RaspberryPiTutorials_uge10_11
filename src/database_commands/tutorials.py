@@ -8,8 +8,10 @@ class TutorialModel:
 
     def GetExternal(self, url):
         try:
+            print("Accessing external tutorial")
+            print(url)
             self.is_valid_url(url)
-            response = requests.get(url)
+            response = requests.get(url, timeout=5)
             return response.content
         except Exception as e:
             print("Error getting tutorial", e)
