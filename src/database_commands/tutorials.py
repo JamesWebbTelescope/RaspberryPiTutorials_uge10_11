@@ -6,6 +6,15 @@ class TutorialModel:
     def __init__(self, db):
         self.db = db
 
+    def GetExternal(self, url):
+        try:
+            self.is_valid_url(url)
+            response = requests.get(url)
+            return response.content
+        except Exception as e:
+            print("Error getting tutorial", e)
+            return False
+
     def GetAll(self):
         try:
             conn = self.db.get_connection()

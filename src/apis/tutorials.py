@@ -11,6 +11,14 @@ def create_api_tutorials(db_manager):
     
     delete_tutorial_model: Model = api.model("Delete tutorial", {'ID': fields.Integer(required=True, description="The course ID")})
     
+    api.route("/<string:url>")
+    class GetTutorialsExternal(Resource):
+
+        @api.doc("Get tutorials from external website")
+        def get(self, url):
+            response = db_manager.tutorials.GetExternal()
+            return response, 200
+
     @api.route("/")
     class Tutorials(Resource):
 
