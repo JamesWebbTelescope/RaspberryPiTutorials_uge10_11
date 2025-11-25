@@ -24,8 +24,8 @@ export const GetTutorials = async (url: string) => {
 export const GetExternal = async (url: string, tutorial: string) => {
     try{
         console.log('Getting external tutorial')
-        console.log(`${url}/api/tutorials/${tutorial}`)
-        const res = await fetch(`${url}/api/tutorials/${tutorial}`)
+        console.log(`${url}/api/tutorials/external?url=${tutorial}`)
+        const res = await fetch(`${url}/api/tutorials/external?url=${tutorial}`)
         const data = await res.json()
         console.log(data)
         return data ? data: []
