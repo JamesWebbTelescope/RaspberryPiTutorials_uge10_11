@@ -12,7 +12,7 @@ class TutorialModel:
             print(url)
             self.is_valid_url(url)
             response = requests.get(url, timeout=5)
-            return response.content
+            return response.text
         except Exception as e:
             print("Error getting tutorial", e)
             return False
