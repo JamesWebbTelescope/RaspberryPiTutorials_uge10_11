@@ -23,7 +23,7 @@ class TextRender extends React.Component<TextProps>{
 
     }
     render() {
-        const html = this.fetchData()
+        //const html = this.fetchData()
         return <div></div>
     }
 }
