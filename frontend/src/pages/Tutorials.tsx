@@ -76,7 +76,7 @@ export default function TutorialsPage() {
                 </Dropdown.Menu>
                 ))}
         <>
-            {display ? <VideoPlayer url={link.current}/>: < TextRender url ={link.current} />}
+            {display ? <VideoPlayer url={link.current}/>: < TextRender url ={API_URL} tutorial={link.current} />}
         </>
     </Layout>
 }
