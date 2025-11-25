@@ -17,13 +17,10 @@ def create_api_tutorials(db_manager):
 
         @api.doc("Get tutorials from external website", params={"url": "Link to tutorial"})
         def get(self):
-            url = request.args.get("url", default="World", type=str)
+            url = request.args.get("url", default="", type=str)
+            print(url.encode('UTF-8'))
             print(url)
-            start = url.index("www")
-            end = len(url)
-            link = url[start:end]
-            print(link)
-            response = db_manager.tutorials.GetExternal(link)
+            response = db_manager.tutorials.GetExternal(url)
             return response, 200
 
     @api.route("/")
