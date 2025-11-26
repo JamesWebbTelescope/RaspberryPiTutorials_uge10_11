@@ -1,7 +1,7 @@
 
 import type { ReactNode } from "react";
 import Header from "./Header";
-import BackgroundImage from "./Image";
+import RaspberryPiImage from "./Image";
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,13 +10,13 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <div>
-      <h1 style={{ color: "black", textAlign: "center", paddingTop: "0vh" }}>
+      <h1 >
         <Header />
-      </h1>
-      <main>
+        <main>
           {children}
-          <BackgroundImage/>
         </main>
+      </h1>
+      <RaspberryPiImage />
     </div>
   );
 }

@@ -1,4 +1,3 @@
-import RaspberryPiImage from "../components/Image";
 import Layout from "../components/Layout";
 // import { useNavigate } from "react-router-dom";
 export default function Home() {
@@ -17,8 +16,6 @@ export default function Home() {
         </p>
  
       </section>
-
-      <RaspberryPiImage/>
     </Layout>
   );
 }
