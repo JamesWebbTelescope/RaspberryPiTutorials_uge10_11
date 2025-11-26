@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 /* Custom gradient animation */
 @keyframes gradient-colors {
   0%, 100% {

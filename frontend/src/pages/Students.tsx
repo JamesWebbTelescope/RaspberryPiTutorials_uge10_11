@@ -46,8 +46,8 @@ export default function StudentsPage() {
                 <h2>Students</h2>
 
 
-                <table className="min-w-full text-cyan-200">
-                <thead className="bg-gray-800/70 text-cyan-300 uppercase text-sm font-semibold tracking-wide">
+                <table className="min-w-full text-black-200">
+                <thead className="bg-gray-800/70 text-green-300 uppercase text-sm font-semibold tracking-wide">
                     <tr>
                     <th className="px-6 py-3 text-left">ID</th>
                     <th className="px-6 py-3 text-left">First Name</th>
@@ -58,7 +58,7 @@ export default function StudentsPage() {
                 <tbody>
                     {students.map((item, index) => (
                     <tr key={index}
-                    className="border-b border-cyan-500/20 hover:bg-gray-700/50 transition-colors"
+                    className="border-b border-black-500/20 hover:bg-gray-700/50 transition-colors"
                     >
                         <td className="px-6 py-3 font-medium">{item.id}</td>
                         <td className="px-6 py-3">{item.firstname}</td>
