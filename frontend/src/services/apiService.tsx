@@ -31,7 +31,7 @@ export const GetExternal = async (url: string, tutorial: string) => {
         return data ? data: []
     }
     catch(error){
-        console.log("Error fetching tutorials:", error);
+        console.log("Error fetching external tutorial:", error);
         return [];
     }    
 }
