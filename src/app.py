@@ -8,13 +8,15 @@ from core.utils import create_admin_user
 from flask_cors import CORS
 import os
 
-
-ALLOWED_ORIGINS = [
+'''
+List of allowed origins for the frontend
+'''
+ALLOWED_ORIGINS = [ 
     "http://localhost:5173",
 ]
 
 
-def get_origin(origin):
+def get_origin(origin): #Check if frontend oriign is on the allowed list of website origins
     return origin if origin in ALLOWED_ORIGINS else None
 
 
@@ -23,7 +25,7 @@ def create_app():
     # Create App
     config = ReadConfigFile("config.json")
 
-    dbManger = DatabaseManager(
+    dbManger = DatabaseManager( #Start the connection to the database
         host = config.db_host, 
         user = config.db_user, 
         password= config.db_password,
@@ -34,7 +36,7 @@ def create_app():
         __name__, 
         static_folder="..\\lager-frontend\\dist",
         static_url_path="")
-    app.wsgi_app = ProxyFix(app.wsgi_app)
+    app.wsgi_app = ProxyFix(app.wsgi_app) #Create the application
     CORS(app, origins=["http://localhost:5173"], supports_credentials=True) 
 
     #app.config["JWT_SECRET_KEY"] = config.jwt_token
