@@ -50,7 +50,7 @@ npm run dev
 * When you have downloaded this project:
 * * Navigate to the project folder:
     ```
-    cd path/to/folder/Lagersystem_Docker_uge8
+    cd path/to/folder/RaspberryPiTutorials_uge10_11
     ```
 * * To create the Dockerfile:
   ```
