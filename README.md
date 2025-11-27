@@ -56,7 +56,7 @@ npm run dev
   ```
   docker init
   ```
-  * When prompted for language, choose Python 3.13
+  * When prompted for language, choose Python 3.11.9
   * Make sure to set port to 8000.
   * When prompted for the command to run the application, set it to:
   ```
