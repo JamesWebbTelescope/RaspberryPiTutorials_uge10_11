@@ -6,28 +6,40 @@ class StudentModel:
         self.db = db
     
     def GetAll(self):
+        '''
+        Docstring for GetAll
+        
+        Get all students
+        '''
         try:
-            conn = self.db.get_connection()
-            with conn.cursor() as cursor:
-                cursor.execute("SELECT * FROM students")
-                myresult = cursor.fetchall()
+            conn = self.db.get_connection() #Open a connection to the database
+            with conn.cursor() as cursor: #Open a cursor
+                cursor.execute("SELECT * FROM students") #Get all students
+                myresult = cursor.fetchall() #Get the result
                 results = [] 
                 for u in myresult:
-                    results.append(StudentModel._TupleToDict(u))
+                    results.append(StudentModel._TupleToDict(u)) #Convert the result to tuples
                 return results
-        except Exception as e:
+        except Exception as e: #If anything goes wrong, print the error
             print("Error getting all students", e)
             return False
         
     def Create(self, firstname, lastname, status):
+        '''
+        Docstring for Create
+        
+        :param firstname: First name of the student that you want to add
+        :param lastname: Last name of the student that you want to add
+        :param status: Status of the student (active or inactive)
+        '''
         try:
-            conn = self.db.get_connection()
-            with conn.cursor() as cursor:
-                cursor.execute(f"INSERT INTO tutorials.students (firstname, lastname, status) VALUES('{firstname}', '{lastname}', '{status}')")
+            conn = self.db.get_connection() #Open a connection to the database
+            with conn.cursor() as cursor: #Get a cursor
+                cursor.execute(f"INSERT INTO tutorials.students (firstname, lastname, status) VALUES('{firstname}', '{lastname}', '{status}')") #Add the student
                 myresult = cursor.fetchall()
-            conn.commit()
+            conn.commit() #Close the connection
             return True
-        except Exception as e:
+        except Exception as e: #If anything goes wrong, print the error.
             print("Error creating new student", e)
             return False
     
