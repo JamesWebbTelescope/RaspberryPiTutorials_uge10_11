@@ -44,30 +44,43 @@ class StudentModel:
             return False
     
     def Update(self, ID, firstname, lastname, status):
+        '''
+        Docstring for Update
+    
+        :param ID: ID of the student you want to update
+        :param firstname: New first name for the student
+        :param lastname: New last name for the student you want to update
+        :param status: New status for the student (active or inactive)
+        '''
         try:
-            conn = self.db.get_connection()
-            with conn.cursor() as cursor:
-                cursor.execute(f"UPDATE students SET firstname = '{firstname}', lastname = '{lastname}', status = '{status}' WHERE studentID = {ID}")
-                myresult = cursor.fetchall()
-            conn.commit()
+            conn = self.db.get_connection() #Open a connection to the database
+            with conn.cursor() as cursor: #Get a cursor
+                cursor.execute(f"UPDATE students SET firstname = '{firstname}', lastname = '{lastname}', status = '{status}' WHERE studentID = {ID}") #Update the student based on the ID of the student
+                myresult = cursor.fetchall() #Get the result
+            conn.commit() #Close the connection
             return True
-        except Exception as e:
+        except Exception as e: #If anything goes wrong, print the error
             print("Error updating student", e)
             return False
         
     def Delete(self, ID):
+        '''
+        Docstring for Delete
+        
+        :param ID: ID of the student you want to remove
+        '''
         try:
-            conn = self.db.get_connection()
-            with conn.cursor() as cursor:
-                cursor.execute(f"UPDATE students SET firstname = '', lastname = '', status = 'Inactive' WHERE studentID = {ID}")
+            conn = self.db.get_connection() #Open the connection to the database
+            with conn.cursor() as cursor: #Get a cursor
+                cursor.execute(f"UPDATE students SET firstname = '', lastname = '', status = 'Inactive' WHERE studentID = {ID}") #Remove the name of the student and set status to Inactive
                 myresult = cursor.fetchall()
-            conn.commit()
+            conn.commit() #Close the connection
             return True
-        except Exception as e:
-            print("Error updating student", e)
+        except Exception as e: #If anything goes wrong, print the error.
+            print("Error deleting student", e)
             return False
         
-    def _TupleToDict(tuple):
+    def _TupleToDict(tuple): #Convert the result from the database to a tuple
         return {
                 "ID": tuple[0],
                 "firstname": tuple[1],
