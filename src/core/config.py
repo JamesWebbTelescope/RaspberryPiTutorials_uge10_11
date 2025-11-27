@@ -17,11 +17,11 @@ class Config:
 
 
 
-def ReadConfigFile(filename):
+def ReadConfigFile(filename): #Get the configuration from the configuration file
     with open(filename) as f:
         try:
-            data = json.load(f)
-            conf =Config(
+            data = json.load(f) #Get the file
+            conf =Config( #Get all settings
                 db_name=data['db_name'],
                 db_host=data['db_host'],
                 db_password=data['db_password'],
@@ -32,7 +32,7 @@ def ReadConfigFile(filename):
                 api_host=data['api_host'],
                 api_port=data['api_port']
             )
-        except Exception as e:
+        except Exception as e: #If anything goes wrong, print the error.
             print(f"Cannot read file \"{filename}\". Exception {e}")            
             conf = None
 
