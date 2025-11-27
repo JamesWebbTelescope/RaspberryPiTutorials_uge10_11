@@ -1,4 +1,4 @@
-# RAspberry Pi Tutorials
+# Raspberry Pi Tutorials
 
 A simple website for collecting all tutorials regarding the Raspberry Pi!
 
