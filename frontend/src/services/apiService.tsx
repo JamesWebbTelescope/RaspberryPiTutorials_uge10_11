@@ -1,10 +1,10 @@
-import type {StudentData, TutorialData} from '../types/Types'
+import type {StudentData, TutorialData, LinkData} from '../types/Types'
 
 export const GetTutorials = async (url: string) => {
     try{
         const res = await fetch(`${url}/api/tutorials`)
         const data = await res.json()
-        let tutorials: Array<TutorialData> = []
+        const tutorials: Array<TutorialData> = []
         for(let i = 0; i < data.length; i++)
         {
             const tutorial: TutorialData = {} as TutorialData
@@ -25,14 +25,14 @@ export const GetExternal = async (url: string, tutorial: string) => {
     try{
         console.log('Getting external tutorial')
         console.log(`${url}/api/tutorials/external?url=${tutorial}`)
-        const res = await fetch(`${url}/api/tutorials/external?url=${tutorial}`).then((data) => {
-            console.log(data);
-            return data;
-        }).catch((error) => {
-            console.error("Error fetching tutorial:", error);
-        });
-        //const data = await res.json()
-        return res
+        const res = await fetch(`${url}/api/tutorials/external?url=${tutorial}`)
+        const data = await res.text()
+        const tutorials: Array<LinkData> = []
+        const link: LinkData = {} as LinkData
+        link.html = data
+        //console.log(link.html)
+        tutorials.push(link)
+        return Array.isArray(tutorials) ? tutorials: []
     }
     catch(error){
         console.log("Error fetching external tutorial:", error);
@@ -46,7 +46,7 @@ export const GetStudents = async (url: string) => {
         const res = await fetch(`${url}/api/student`)
         console.log(res)
         const data = await res.json()
-        let students: Array<StudentData> = []
+        const students: Array<StudentData> = []
         for(let i = 0; i < data.length; i++)
         {
             const student: StudentData = {} as StudentData

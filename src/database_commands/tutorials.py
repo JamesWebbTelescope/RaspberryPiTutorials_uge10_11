@@ -16,11 +16,11 @@ class TutorialModel:
             self.is_valid_url(url) #Check that it is a valid link.
             session = HTMLSession() #Start a new website session
             response = session.get(url) #Get the response from the website
-            response = response.html.find('body') #Find the body of the response
-            print(response)
+            response = response.html.find('html') #Find the body of the response
+            #print(response)
             #soup = BeautifulSoup(response.text, "html.parser")
             #text_content = soup.get_text(separator="\n", strip=True)
-            return response[0].text #Return it as a text string
+            return response[0].text.encode('UTF-8') #Return it as a text string
         except Exception as e: #If anything goes wrong
             print("Error getting tutorial:", e) #Print the error
             return False

@@ -52,14 +52,14 @@ export default function TutorialsPage() {
             console.log(url)
             console.log("This is a youtube link")
             return ([
-                updateDisplay(display)])
+                updateDisplay(false)])
         }
         else if(result == false)
         {
             link.current = url
             console.log(url)
             console.log("Nothing has happened yet")
-            return ([updateDisplay(display)])
+            return ([updateDisplay(true)])
         }
 
     }

@@ -10,3 +10,7 @@ export interface TutorialData{
     name: string;
     link: string;
 }
+
+export interface LinkData{
+    html: string;
+}
