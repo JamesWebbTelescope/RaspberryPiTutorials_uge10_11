@@ -30,12 +30,13 @@ class TextRender extends React.Component<TextProps>{
     async componentDidMount() {
         htmlref = await this.fetchData()
         console.log("Getting text from websites")
+        htmlref = htmlref.replaceAll('\n', '')
         console.log(htmlref)
 }
 
     render() {
         this.componentDidMount()
-        const cleanHTML = DOMPurify.sanitize(htmlref.toString());
+        const cleanHTML = DOMPurify.sanitize(htmlref.toString(), {USE_PROFILES: {html: true}});
         console.log("Length of HTML")
         console.log(cleanHTML)
         return (
